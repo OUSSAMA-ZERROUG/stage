@@ -1,0 +1,21 @@
+// This file contain the configuration for the secondary database : Alain's database
+// Only select queries are allowed on this database
+
+//Only use prisma db pull to update this file
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../node_modules/@prisma-secondary/prisma/client"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = "" // it will be override by the corresponding prismaService
+}
+
+model account {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
